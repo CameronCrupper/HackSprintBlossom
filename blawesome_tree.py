@@ -11,7 +11,15 @@ pygame.init()
 display_surface = pygame.display.set_mode((850, 600))
 
 #Making background image
-image = pygame.image.load('tree.png')
+image = pygame.image.load('tree1.png')
+
+#sky background
+sky_blue = (135,206,235)
+
+display_surface.fill(sky_blue)
+
+pygame.Surface.set_colorkey (image, [255,255,255])
+#pygame.Surface.set_colorkey (image, [128,128,128])
 
 #displaying tree to background
 display_surface.blit(image,(0,0))
