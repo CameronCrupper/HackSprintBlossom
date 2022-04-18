@@ -2,43 +2,50 @@
 import pygame
 import sys
 import random
+from settings import Settings
+from basket import Basket
 
-# initializing imported module
-pygame.init()
 
-# displaying a window of height
-# 500 and width 400
-display_surface = pygame.display.set_mode((850, 600))
+def run_game():
+    # initializing imported module
+    pygame.init()
 
-#Making background image
-image = pygame.image.load('tree1.png')
+    ai_settings = Settings()
 
-#sky background
-sky_blue = (135,206,235)
+    # displaying a window of height
+    # 500 and width 400
+    screen = pygame.display.set_mode((ai_settings.screen_width,ai_settings.screen_height))
+    basket = Basket(screen)
+    pygame.display.set_caption("Blawesome Tree")
 
-display_surface.fill(sky_blue)
+    #Making background image
+    tree_bg = pygame.image.load('tree1.png')
 
-pygame.Surface.set_colorkey (image, [255,255,255])
-#pygame.Surface.set_colorkey (image, [128,128,128])
+    #sky background
+    #sky_blue = (135,206,235)
 
-#displaying tree to background
-display_surface.blit(image,(0,0))
+    #display_surface.fill(sky_blue)
 
-#update display
-pygame.display.flip()
+    #pygame.Surface.set_colorkey (image, [255,255,255])
+    #pygame.Surface.set_colorkey (image, [128,128,128])
 
-# creating a bool value which checks
-# if game is running
-running = True
+    #displaying tree to background
+    screen.blit(tree_bg,(0,0))
 
-# keep game running till running is true
-while running:
+    #update display
+    pygame.display.flip()
 
-    # Check for event if user has pushed
-    # any event in queue
-    for event in pygame.event.get():
+    # keep game running till running is true
+    while True:
 
-        # if event is of type quit then
-        # set running bool to false
-        if event.type == pygame.QUIT:
-            running = False
+        # Check for event if user has pushed
+        # any event in queue
+        for event in pygame.event.get():
+
+            # if event is of type quit then
+            # set running bool to false
+            if event.type == pygame.QUIT:
+                sys.exit()
+        basket.blitme()
+        pygame.display.flip()
+run_game()
