@@ -16,7 +16,7 @@ def run_game():
     # initializing imported module
     pygame.init()
     score = 0
-    scoreFont = pygame.font.SysFont('Arial', 20)
+    scoreFont = pygame.font.SysFont('Arial', 60)
     scoreBoard = scoreFont.render(str(score), True, (255, 255, 255))
 
     color = (255,255,255)
