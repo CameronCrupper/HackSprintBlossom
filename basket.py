@@ -29,10 +29,10 @@ class Basket(pygame.sprite.Sprite):
             #self.rect.left = screen.get_rect().left
         
     def blitme(self):
-        RED = (255,0,0)
+        #RED = (255,0,0)
         #put basket at specific location
         self.screen.blit(self.image, self.rect)
-        pygame.draw.rect(self.screen, RED, self.rect, 1)
+        #pygame.draw.rect(self.screen, RED, self.rect, 1)
 
     def update(self):
         if self.moving_right:
