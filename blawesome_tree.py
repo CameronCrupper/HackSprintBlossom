@@ -39,14 +39,16 @@ def run_game():
         for i in range(0, 3):
             blawBlossom = Blossom(blawesomFruit)
             blossomList.add(blawBlossom)
-
+    if fruitList == pygame.sprite.spritecollide(basket, fruitList, True):
+        score += 1
     # keep game running till running is true
     while True:
         #if basket.rect.left > WIDTH:
             #basket.rect.right = 0
         #if Fruit.colliderect(basket):
             #score +=1
-        screen.blit(scoreBoard, (15, 15))
+        
+        
         if basket.rect.left < 0:
             basket.rect.left = 0
         if basket.rect.right > WIDTH:
@@ -61,7 +63,7 @@ def run_game():
             blossom.update(currentTime)
         basket.update()
         basket.blitme()
-        
+        screen.blit(scoreBoard, (15, 15))
         pygame.display.update()
         clock.tick(60)
         #print(currentTime)
