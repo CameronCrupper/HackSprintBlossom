@@ -2,11 +2,12 @@
 import pygame
 import sys
 import random
-from settings import Settings
+#from settings import Settings
 from basket import Basket
 from Fruit import Fruit
 from Blossom import Blossom
 import game_functions as gf
+
 
 
 def run_game():
@@ -14,14 +15,20 @@ def run_game():
     HEIGHT = 600
     # initializing imported module
     pygame.init()
-    ai_settings = Settings()
+    score = '0'
+    scoreFont = pygame.font.SysFont('Arial', 20)
+    scoreBoard = scoreFont.render(score, True, (255, 255, 255))
+
+    color = (255,255,255)
+
+    #ai_settings = Settings()
     clock = pygame.time.Clock()
     #Making background image
     tree_bg = pygame.image.load('tree1.png')
     # displaying a window of height
     # 500 and width 400
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    basket = Basket(screen,ai_settings)
+    basket = Basket(screen)
     pygame.display.set_caption("Blawesome Tree")
 
     fruitList = pygame.sprite.Group()
@@ -33,11 +40,13 @@ def run_game():
             blawBlossom = Blossom(blawesomFruit)
             blossomList.add(blawBlossom)
 
-
     # keep game running till running is true
     while True:
         #if basket.rect.left > WIDTH:
             #basket.rect.right = 0
+        #if Fruit.colliderect(basket):
+            #score +=1
+        screen.blit(scoreBoard, (15, 15))
         if basket.rect.left < 0:
             basket.rect.left = 0
         if basket.rect.right > WIDTH:
@@ -52,8 +61,8 @@ def run_game():
             blossom.update(currentTime)
         basket.update()
         basket.blitme()
+        
         pygame.display.update()
         clock.tick(60)
-        
-        print(currentTime)
+        #print(currentTime)
 run_game()
