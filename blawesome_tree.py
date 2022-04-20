@@ -15,9 +15,9 @@ def run_game():
     HEIGHT = 600
     # initializing imported module
     pygame.init()
-    score = '0'
+    score = 0
     scoreFont = pygame.font.SysFont('Arial', 20)
-    scoreBoard = scoreFont.render(score, True, (255, 255, 255))
+    scoreBoard = scoreFont.render(str(score), True, (255, 255, 255))
 
     color = (255,255,255)
 
@@ -30,8 +30,9 @@ def run_game():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     basket = Basket(screen)
     pygame.display.set_caption("Blawesome Tree")
-
+    P1 = Basket(screen)
     fruitList = pygame.sprite.Group()
+    #fruitList.add(basket)
     blossomList = pygame.sprite.Group()
     for x in range(0, 10):
         blawesomFruit = Fruit(15, 15)
@@ -39,16 +40,23 @@ def run_game():
         for i in range(0, 3):
             blawBlossom = Blossom(blawesomFruit)
             blossomList.add(blawBlossom)
-    if fruitList == pygame.sprite.spritecollide(basket, fruitList, True):
-        score += 1
+    
+    enemies = pygame.sprite.Group()
+    enemies.add(P1)
+    
+    #if fruitList == pygame.sprite.spritecollide(basket, fruitList, True):
+        #score += 1
     # keep game running till running is true
+    
     while True:
         #if basket.rect.left > WIDTH:
             #basket.rect.right = 0
         #if Fruit.colliderect(basket):
             #score +=1
         
-        
+        if pygame.sprite.spritecollideany(P1, blossomList):
+            score +=1
+            print("score")
         if basket.rect.left < 0:
             basket.rect.left = 0
         if basket.rect.right > WIDTH:
