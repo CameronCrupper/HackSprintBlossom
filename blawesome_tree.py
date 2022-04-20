@@ -10,9 +10,13 @@ import game_functions as gf
 from pygame import mixer
 from pygame.locals import *
 
-
+mixer.init()
+ting = pygame.mixer.Sound("ping.wav")
+def ping():
+    pygame.mixer.Sound.play(ting)
+    #pygame.mixer.music.stop()
 def run_game():
-    mixer.init()
+    #mixer.init()
     mixer.music.load('MP3FY_-Gaslamp-Funworks.wav')
     mixer.music.play()
     WIDTH = 850
@@ -57,6 +61,7 @@ def run_game():
         if caught:
             score +=1
             print(score)
+            ping()
             scoreBoard = scoreFont.render(str(score), True, (255, 255, 255))
         if basket.rect.left < 0:
             basket.rect.left = 0
