@@ -30,7 +30,6 @@ def run_game():
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
     basket = Basket(screen)
     pygame.display.set_caption("Blawesome Tree")
-    P1 = Basket(screen)
     fruitList = pygame.sprite.Group()
     #fruitList.add(basket)
     blossomList = pygame.sprite.Group()
@@ -41,9 +40,6 @@ def run_game():
             blawBlossom = Blossom(blawesomFruit)
             blossomList.add(blawBlossom)
     
-    enemies = pygame.sprite.Group()
-    enemies.add(P1)
-    
     #if fruitList == pygame.sprite.spritecollide(basket, fruitList, True):
         #score += 1
     # keep game running till running is true
@@ -53,10 +49,11 @@ def run_game():
             #basket.rect.right = 0
         #if Fruit.colliderect(basket):
             #score +=1
-        
-        if pygame.sprite.spritecollideany(P1, blossomList):
+        caught = pygame.sprite.spritecollide(basket, blossomList, True)
+        if caught:
             score +=1
-            print("score")
+            print(score)
+            scoreBoard = scoreFont.render(str(score), True, (255, 255, 255))
         if basket.rect.left < 0:
             basket.rect.left = 0
         if basket.rect.right > WIDTH:
