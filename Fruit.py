@@ -16,5 +16,5 @@ class Fruit(pygame.sprite.Sprite):
         self.height = height
         # set start position of fruit with random
         self.rect = self.image.get_rect()
-        self.rect.x = random.randrange(30, 820)
-        self.rect.y = random.randrange(30, 300)
+        self.rect.x = random.randrange(100, 700)
+        self.rect.y = random.randrange(135, 350)
