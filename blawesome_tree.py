@@ -7,10 +7,14 @@ from basket import Basket
 from Fruit import Fruit
 from Blossom import Blossom
 import game_functions as gf
-
+from pygame import mixer
+from pygame.locals import *
 
 
 def run_game():
+    mixer.init()
+    mixer.music.load('MP3FY_-Gaslamp-Funworks.wav')
+    mixer.music.play()
     WIDTH = 850
     HEIGHT = 600
     # initializing imported module
